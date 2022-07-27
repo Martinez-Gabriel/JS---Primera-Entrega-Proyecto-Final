@@ -78,13 +78,13 @@ class Carrito {
   }
   agregarAlCarrito(producto) {
     this.productosEnElCarrito.push(producto)
-    this.calcularPrecioTotal()
+    this.calcularPrecioTotalMasIva()
   }
   mostrarCarrito() {
     return this.productosEnElCarrito
   }
-  calcularPrecioTotal() {
-    this.total = this.productosEnElCarrito.reduce((acc, val) => acc + val.precio, 0)
+  calcularPrecioTotalMasIva() {
+    this.total = this.productosEnElCarrito.reduce((acc, val) => acc + val.precio * 1.21, 0)
     return this.total
   }
 }
@@ -166,7 +166,7 @@ while (menu != -1) {
     alert(
       'Producto agregado exitosamente, su carrito es \n' + JSON.stringify(carrito.mostrarCarrito())
     )
-    alert('Total hasta el momento: $' + carrito.calcularPrecioTotal())
+    alert('Total hasta el momento: $' + carrito.calcularPrecioTotalMasIva())
   } 
   
   //Termina La Opcion Numero: 1 -Procesadores
@@ -195,7 +195,7 @@ while (menu != -1) {
     alert(
       'Producto agregado exitosamente, su carrito es \n' + JSON.stringify(carrito.mostrarCarrito())
     )
-    alert('Total hasta el momento: $' + carrito.calcularPrecioTotal())
+    alert('Total hasta el momento: $' + carrito.calcularPrecioTotalMasIva())
   }
 
   //Termina La Opcion Numero: 2 -Motherboards
@@ -223,7 +223,7 @@ while (menu != -1) {
     alert(
       'Producto agregado exitosamente, su carrito es \n' + JSON.stringify(carrito.mostrarCarrito())
     )
-    alert('Total hasta el momento: $' + carrito.calcularPrecioTotal())
+    alert('Total hasta el momento: $' + carrito.calcularPrecioTotalMasIva())
   }
   
   //Termina La Opcion Numero: 3 -Almacenamiento
@@ -234,4 +234,53 @@ while (menu != -1) {
   }
 }
 
-alert ('Gracias por utilizar el Similador de Gabriel Martinez')
+//Muestro el precio de los productos + IVA 21%
+alert ('El total a pagar es de: $' + carrito.calcularPrecioTotalMasIva())
+
+//Guardo valor total + IVA en una variable llamada total
+let total = carrito.calcularPrecioTotalMasIva();
+
+
+function calcularTresCuotas (total) {
+  totalParseado = parseInt(total);
+  totalParseado = totalParseado + (totalParseado * 30) / 100;
+  alert('Precio + 30% de interes: '+ totalParseado);
+  totalParseado = totalParseado / 3;
+  alert('Son 3 Cuotas y el valor de cada una es de: $'+ totalParseado);
+}
+
+function calcularSeisCuotas (total) {
+  totalParseado = parseInt(total);
+  totalParseado = totalParseado + (totalParseado * 40) / 100;
+  alert('Precio + 40% de interes: '+ totalParseado);
+  totalParseado = totalParseado / 6;
+  alert('Son 6 Cuotas y el valor de cada una es de: $'+ totalParseado);
+}
+
+function calcularDoceCuotas (total) {
+  totalParseado = parseInt(total);
+  totalParseado = totalParseado + (totalParseado * 60) / 100;
+  alert('Precio + 60% de interes: '+ totalParseado);
+  totalParseado = totalParseado / 12;
+  alert('Son 12 Cuotas y el valor de cada una es de: $'+ totalParseado);
+}
+//Pregunto al usuario si desea abonar en Cuotas
+respuesta = prompt ('Desea abonar en Cuotas? S/N');
+if (respuesta != 'N') {
+    respuesta = prompt ('Ingrese la cantidad de cuotas que desea: 3, 6 o 12')
+    switch (respuesta) {
+        case "3":
+            calcularTresCuotas(total);
+            break;
+        case "6":
+            calcularSeisCuotas(total);
+            break;
+        case "12":
+            calcularDoceCuotas(total);
+            break;
+    }
+}else {
+    alert ('Precio total a pagar en efectivo es de: $'+ total);
+}
+
+alert ('Gracias por su compra en el simulador de Gabriel Martinez!');
