@@ -36,36 +36,36 @@ const misProductos = [
   },
   {
     id: 6,
-    nombre: 'SSD Kingstone 1TB',
+    nombre: 'SSD Kingstone 250GB',
     marca: 'Kingstone',
     tipo: 'almacenamiento',
     precio: 20000
   },
   {
     id: 7,
-    nombre: 'HDD Kingstone 1TB',
+    nombre: 'HDD 1TB',
     marca: 'Wester Digital',
     tipo: 'almacenamiento',
     precio: 10000
   },
   {
     id: 8,
-    nombre: 'HDD Kingstone 2TB',
+    nombre: 'HDD 2TB',
     marca: 'Wester Digital',
     tipo: 'almacenamiento',
     precio: 17000
   },
   {
     id: 9,
-    nombre: 'Aorus ultra gaming 3.0',
+    nombre: 'aorus b450 pro wifi',
     marca: 'Aorus',
     tipo: 'motherboard',
     precio: 55000
   },
   {
     id: 10,
-    nombre: 'Aorus ultra gaming 5.0',
-    marca: 'Aorus',
+    nombre: 'asus tuf gaming b450m plus 2',
+    marca: 'Asus',
     tipo: 'motherboard',
     precio: 65000
   },
