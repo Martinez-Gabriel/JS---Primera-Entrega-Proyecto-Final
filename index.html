@@ -5,50 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Boostrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
     <title>Bienvenidos! a la Web de compras PROYECT-HARDWARE</title>
   </head>
   <body>
+    <div id="container" class="container mb-3">
+      <!-- Titulo de la pagina -->
+      <h1>Tienda! PROYECT-HARDWARE</h1>
+      <h2>Seleccione el tipo de producto que desea comprar!</h2>
+      <!-- Contenedor de las card inyectadas por JS -->
 
-    <!-- Titulo de la pagina -->
-    <h1>Tienda! PROYECT-HARDWARE</h1>
-    <h2>Seleccione el tipo de producto que desea comprar!</h2>
-    <!-- Contenedor de las card inyectadas por JS -->
-    
-    
-    <div  id="container" class="card mb-3" style="max-width: 540px;"></div>
-    
-    
-    <!-- Procesadores -->
-    <div id="procesadores" class="card" style="width: 18rem;">
-      <img src="./imagenesProcesadores/AMD Ryzen 3600X.jpg" class="card-img-top" alt="imagen de procesadores">
-      <div class="card-body">
-        <h4>Procesadores</h4>
-        <button id="seleccion1" type="button" class="btn btn-primary">Seleccionar</button>
-      </div>
+      <div id="filtroProductos" class="row px-2 gap-3 pt-3"></div>
+      <div id="productosFiltrados" class="row px-2 gap-3 pt-3"></div>
+      <div id="productosSeleccionados" class="row px-2 gap-3 pt-3"></div>
     </div>
-    <!-- Motherboards -->
-    <div id="motherboard" class="card" style="width: 18rem;">
-      <img src="./imagenesProcesadores/aorus b450 pro wifi.jpg" class="card-img-top" alt="imagen de motherboards">
-      <div class="card-body">
-        <h4>Motherboards</h4>
-        <button id="seleccion2" type="button" class="btn btn-primary">Seleccionar</button>
-      </div>
-    </div>
-    <!-- Almacenamiento -->
-    <div id="almacenamiento" class="card" style="width: 18rem;">
-      <img src="./imagenesProcesadores/SSD Kingstone 250GB.jpg" class="card-img-top" alt="imagen de almacenamiento">
-      <div class="card-body">
-        <h4>Almacenamiento</h4>
-        <button id="seleccion3" type="button" class="btn btn-primary">Seleccionar</button>
-      </div>
-    </div>
-
 
     <!-- Mi JS -->
     <script src="./js/IntentandoAplicarDomYEventos.js"></script>
     <!-- JS Boostrap -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+      integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

@@ -1,148 +1,219 @@
 const misProductos = [
-    {
-      id: 1,
-      nombre: 'intel i5 9600k',
-      marca: 'intel',
-      tipo: 'procesador',
-      precio: 35000
-    },
-    {
-      id: 2,
-      nombre: 'AMD Ryzen 3600X',
-      marca: 'AMD',
-      tipo: 'procesador',
-      precio: 47000
-    },
-    {
-      id: 3,
-      nombre: 'Aorus ultra gaming 2.0',
-      marca: 'Aorus',
-      tipo: 'motherboard',
-      precio: 42000
-    },
-    {
-      id: 4,
-      nombre: 'intel i7 9700k',
-      marca: 'intel',
-      tipo: 'procesador',
-      precio: 45000
-    },
-    {
-      id: 5,
-      nombre: 'intel i9 9900k',
-      marca: 'intel',
-      tipo: 'procesador',
-      precio: 55000
-    },
-    {
-      id: 6,
-      nombre: 'SSD Kingstone 250GB',
-      marca: 'Kingstone',
-      tipo: 'almacenamiento',
-      precio: 20000
-    },
-    {
-      id: 7,
-      nombre: 'HDD 1TB',
-      marca: 'Wester Digital',
-      tipo: 'almacenamiento',
-      precio: 10000
-    },
-    {
-      id: 8,
-      nombre: 'HDD 2TB',
-      marca: 'Wester Digital',
-      tipo: 'almacenamiento',
-      precio: 17000
-    },
-    {
-      id: 9,
-      nombre: 'aorus b450 pro wifi',
-      marca: 'Aorus',
-      tipo: 'motherboard',
-      precio: 55000
-    },
-    {
-      id: 10,
-      nombre: 'asus tuf gaming b450m plus 2',
-      marca: 'Asus',
-      tipo: 'motherboard',
-      precio: 65000
-    },
-  ]
+  {
+    id: 1,
+    nombre: 'intel i5 9600k',
+    marca: 'intel',
+    tipo: 'procesador',
+    precio: 35000,
+    imagen: '../imagenesProcesadores/intel-core-i5-9600k.jpg'
+  },
+  {
+    id: 2,
+    nombre: 'AMD Ryzen 3600X',
+    marca: 'AMD',
+    tipo: 'procesador',
+    precio: 47000,
+    imagen: '../imagenesProcesadores/ryzen-3600x.jpg'
+  },
+  {
+    id: 3,
+    nombre: 'Aorus ultra gaming 2.0',
+    marca: 'Aorus',
+    tipo: 'motherboard',
+    precio: 42000,
+    imagen: '../imagenesProcesadores/aorus-ultra-gaming-2.0.png'
+  },
+  {
+    id: 4,
+    nombre: 'intel i7 9700k',
+    marca: 'intel',
+    tipo: 'procesador',
+    precio: 45000,
+    imagen: '../imagenesProcesadores/intel-core-i7-9700k.jpg'
+  },
+  {
+    id: 5,
+    nombre: 'intel i9 9900k',
+    marca: 'intel',
+    tipo: 'procesador',
+    precio: 55000,
+    imagen: '../imagenesProcesadores/intel-core-i9-9900k.jpg'
+  },
+  {
+    id: 6,
+    nombre: 'SSD Kingstone 250GB',
+    marca: 'Kingstone',
+    tipo: 'almacenamiento',
+    precio: 20000,
+    imagen: '../imagenesProcesadores/ssd-kingston.jpg'
+  },
+  {
+    id: 7,
+    nombre: 'HDD 1TB',
+    marca: 'Wester Digital',
+    tipo: 'almacenamiento',
+    precio: 10000,
+    imagen: '../imagenesProcesadores/wester-digital-1-tb.jpg'
+  },
+  {
+    id: 8,
+    nombre: 'HDD 2TB',
+    marca: 'Wester Digital',
+    tipo: 'almacenamiento',
+    precio: 17000,
+    imagen: '../imagenesProcesadores/wester-digital-2-tb.png'
+  },
+  {
+    id: 9,
+    nombre: 'aorus b450 pro wifi',
+    marca: 'Aorus',
+    tipo: 'motherboard',
+    precio: 55000,
+    imagen: '../imagenesProcesadores/b450-aorus-pro-wifi.jpg'
+  },
+  {
+    id: 10,
+    nombre: 'asus tuf gaming b450m plus 2',
+    marca: 'Asus',
+    tipo: 'motherboard',
+    precio: 65000,
+    imagen: '../imagenesProcesadores/asus-tuf-gaming-b450m-plus-ii.jpg'
+  }
+]
 
-  class Carrito {
-    constructor() {
-      this.productosEnElCarrito = []
-      this.total = 0
-    }
-    agregarAlCarrito(producto) {
-      this.productosEnElCarrito.push(producto)
-      this.calcularPrecioTotalMasIva()
-    }
-    mostrarCarrito() {
-      return this.productosEnElCarrito
-    }
-    calcularPrecioTotalMasIva() {
-      this.total = this.productosEnElCarrito.reduce((acc, val) => acc + val.precio * 1.21, 0)
-      return this.total
-    }
+const categorias = [
+  {
+    id: 1,
+    nombre: 'procesador',
+    imagen: '../imagenesProcesadores/ryzen-3600x.jpg'
+  },
+  {
+    id: 2,
+    nombre: 'motherboard',
+    imagen: '../imagenesProcesadores/asus-tuf-gaming-b450m-plus-ii.jpg'
+  },
+  {
+    id: 3,
+    nombre: 'almacenamiento',
+    imagen: '../imagenesProcesadores/wester-digital-1-tb.jpg'
   }
-  
-  class Productos {
-    constructor() {
-      this.productos = []
-    }
-    cargarProducto(producto) {
-      // validar si el producto ya existe
-      this.productos.push(producto)
-    }
-  
-    mostrarProductos() {
-      return this.productos
-    }
+]
+
+class Carrito {
+  constructor() {
+    this.productosEnElCarrito = []
+    this.total = 0
   }
-  
-  class Producto {
-    constructor(id, nombre, marca, tipo, precio, cantidad) {
-      this.id = id
-      this.nombre = nombre
-      this.marca = marca
-      this.tipo = tipo
-      this.precio = precio
-      this.cantidad = 1
-    }
+  agregarAlCarrito(producto) {
+    this.productosEnElCarrito.push(producto)
+    this.calcularPrecioTotalMasIva()
   }
-  
-  const carrito = new Carrito()
-  
-  const productos = new Productos()
-  
-  misProductos.forEach((producto) => {
-    const nuevoProducto = new Producto(
-      producto.id,
-      producto.nombre,
-      producto.marca,
-      producto.tipo,
-      producto.precio,
-      producto.cantidad
-    )
-  
-    productos.cargarProducto(nuevoProducto)
+  mostrarCarrito() {
+    return this.productosEnElCarrito
+  }
+  calcularPrecioTotalMasIva() {
+    this.total = this.productosEnElCarrito.reduce((acc, val) => acc + val.precio * 1.21, 0)
+    return this.total
+  }
+}
+
+class Productos {
+  constructor() {
+    this.productos = []
+  }
+  cargarProducto(producto) {
+    // validar si el producto ya existe
+    this.productos.push(producto)
+  }
+
+  mostrarProductos() {
+    return this.productos
+  }
+}
+
+class Producto {
+  constructor(id, nombre, marca, tipo, precio, cantidad) {
+    this.id = id
+    this.nombre = nombre
+    this.marca = marca
+    this.tipo = tipo
+    this.precio = precio
+    this.cantidad = 1
+  }
+}
+
+const carrito = new Carrito()
+
+const productos = new Productos()
+
+misProductos.forEach((producto) => {
+  const nuevoProducto = new Producto(
+    producto.id,
+    producto.nombre,
+    producto.marca,
+    producto.tipo,
+    producto.precio,
+    producto.cantidad
+  )
+
+  productos.cargarProducto(nuevoProducto)
+})
+
+
+const cargarFiltros = () => {
+  const contenedorFiltros = document.getElementById('filtroProductos')
+
+  categorias.forEach((categoria) => {
+    const filtro = document.createElement('div')
+    filtro.classList.add('card')
+    filtro.classList.add('col')
+    filtro.style.maxWidth = '300px'
+    filtro.id = categoria.id
+
+    filtro.innerHTML = `
+    <img
+      src=${categoria.imagen}
+      class="card-img-top"
+      alt="imagen de procesadores"
+    />
+    <div class="card-body">
+      <h4 style={text-transform:'capitalize'}>${categoria.nombre}</h4>
+      <button id="botonCategoria${categoria.nombre}" type="button" class="btn btn-primary">Seleccionar</button>
+    </div>
+    `
+
+    contenedorFiltros.append(filtro)
+    const agregarEventoABoton = document.getElementById(`botonCategoria${categoria.nombre}`)
+    agregarEventoABoton.addEventListener('click', () => {
+      mostrarProductosFiltrados(categoria.nombre)
+    })
   })
+}
 
-//FUNCION QUE AGREGA CARDS
-const mostrarCardProducto = (productoPorTipo) =>{
-    const div = document.createElement ('div');
-    for (const producto of productoPorTipo) {
-    const h5 = document.createElement ('h5');
-    h5.innerHTML = `
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src=  class="img-fluid rounded-start" alt="">
+//VALIDO QUE LA SELECCION DE PRODUCTO NO SE REPITA
+const mostrarProductosFiltrados = (nombre) => {
+  // limpiar el contenedor de productos filtrados...
+  if (document.getElementById('productosFiltrados').firstChild) {
+    const borrarDiv = document.getElementById('productosFiltrados')
+    borrarDiv.innerHTML = ``
+}
+//FIN DE LA VALIDACION
+//FILTRO LOS PRODUCTOS
+  const filtrarProductos = misProductos.filter((producto) => producto.tipo === nombre)
+  const contenedorProductos = document.getElementById('productosFiltrados')
+
+  for (const producto of filtrarProductos) {
+    const contenedorCard = document.createElement('div')
+    contenedorCard.classList.add('card')
+    contenedorCard.classList.add('col')
+    contenedorCard.style.maxWidth = '300px'
+    contenedorCard.innerHTML = `
+
+      <div class="">
+        <div class="col">
+          <img src=${producto.imagen} class="img-fluid rounded-start" alt="">
         </div>
-        <div class="col-md-8">
+        <div>
           <div class="card-body">
             <h5 class="card-title"> ${producto.nombre} </h5>
             <p class="card-text">Breve descripcion del producto a comprar</p>
@@ -152,43 +223,12 @@ const mostrarCardProducto = (productoPorTipo) =>{
           </div>
         </div>
       </div>
-    </div>
-    `;
-    div.append(h5);
-    }
-    document.getElementById('container').append(div);
+
+    `
+    contenedorProductos.append(contenedorCard)
+  }
 }
-
-//Filtra PROCESADORES
-const procesadores = document.getElementById('seleccion1');
-procesadores.addEventListener('click', () => {
-  console.log('Alguien hizo click - addEventListener');
-  const productosPorProcesador = productos.mostrarProductos().filter((producto) => {
-    return '\n', producto.tipo === 'procesador'
-  });
-  mostrarCardProducto(productosPorProcesador);
-   
-
-});
-//Filtra MOTHERBOARDS
-const motherboard = document.getElementById('seleccion2');
-motherboard.addEventListener('click', () => {
-    console.log('Alguien hizo click - addEventListener');
-    const productosPorMotherboard = productos.mostrarProductos().filter((producto) => {
-      return '\n', producto.tipo === 'motherboard'
-    })
-    mostrarCardProducto(productosPorMotherboard);
-     
-});
-//Filtra ALMACENAMIENTO
-const almacenamiento = document.getElementById('seleccion3');
-almacenamiento.addEventListener('click', () => {
-    console.log('Alguien hizo click - addEventListener');
-    const productosPorAlmacenamiento = productos.mostrarProductos().filter((producto) => {
-      return '\n', producto.tipo === 'almacenamiento'
-    })
-    mostrarCardProducto(productosPorAlmacenamiento);
-     
-});
+//FIN DE FILTRO DE PRODUCTOS
+cargarFiltros()
 
 
