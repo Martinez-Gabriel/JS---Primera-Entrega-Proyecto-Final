@@ -219,16 +219,35 @@ const mostrarProductosFiltrados = (nombre) => {
             <p class="card-text">Breve descripcion del producto a comprar</p>
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             <h3> ${producto.precio} </h3>
-            <button id="productoElegido" type="button" class="btn btn-primary">Comprar</button>
+            <button id='boton${misProductos.id}' type="submit" class="btn btn-primary">Agregar al Carrito</button>
           </div>
         </div>
       </div>
 
     `
     contenedorProductos.append(contenedorCard)
+    
+  }
+    //Asigno un evento a cada boton
+    misProductos.forEach((producto) => {
+      document.getElementById(`boton${misProductos.id}`).addEventListener('click', function ()  {
+        agregarCarrito(producto);
+      })
+    })
+  
+  
+    function agregarCarrito (productoComprado) {
+    carrito.agregarAlCarrito (productoComprado)
+    
+    document.getElementById('tablaCarrito').innerHTML += `
+      <tr>
+        <th>${productoComprado.id}</th>
+        <th>${productoComprado.nombre}</th>
+        <th>${productoComprado.precio}</th>
+      </tr>
+    `
   }
 }
-//FIN DE FILTRO DE PRODUCTOS
-cargarFiltros()
+cargarFiltros();
 
 
