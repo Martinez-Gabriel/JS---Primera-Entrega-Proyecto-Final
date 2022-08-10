@@ -1,3 +1,20 @@
+//Muestro la informacion del LocalStorage
+const carritoString = localStorage.getItem('carritoDeCompras');
+const carritoParseado = JSON.parse(carritoString);
+console.log(carritoParseado)
+const tabla = document.getElementById('tablaCarrito');
+carritoParseado.forEach ((producto) => {
+  tabla.innerHTML += `
+    <tr>
+      <th>${producto.id}</th>
+      <th>${producto.nombre}</th>
+      <th>${producto.precio}</th>
+    </tr>
+  `;
+});
+  
+
+//Mi array de productos
 const misProductos = [
   {
     id: 1,
@@ -104,14 +121,14 @@ class Carrito {
     this.productosEnElCarrito = []
     this.total = 0
   }
-  agregarAlCarrito(producto) {
+  agregarAlCarrito (producto) {
     this.productosEnElCarrito.push(producto)
     this.calcularPrecioTotalMasIva()
   }
-  mostrarCarrito() {
+  mostrarCarrito () {
     return this.productosEnElCarrito
   }
-  calcularPrecioTotalMasIva() {
+  calcularPrecioTotalMasIva () {
     this.total = this.productosEnElCarrito.reduce((acc, val) => acc + val.precio * 1.21, 0)
     return this.total
   }
@@ -121,12 +138,12 @@ class Productos {
   constructor() {
     this.productos = []
   }
-  cargarProducto(producto) {
+  cargarProducto (producto) {
     // validar si el producto ya existe
     this.productos.push(producto)
   }
 
-  mostrarProductos() {
+  mostrarProductos () {
     return this.productos
   }
 }
@@ -196,9 +213,9 @@ const mostrarProductosFiltrados = (nombre) => {
   if (document.getElementById('productosFiltrados').firstChild) {
     const borrarDiv = document.getElementById('productosFiltrados')
     borrarDiv.innerHTML = ``
-}
-//FIN DE LA VALIDACION
-//FILTRO LOS PRODUCTOS
+  }
+  //FIN DE LA VALIDACION
+  //FILTRO LOS PRODUCTOS
   const filtrarProductos = misProductos.filter((producto) => producto.tipo === nombre)
   const contenedorProductos = document.getElementById('productosFiltrados')
 
@@ -219,35 +236,58 @@ const mostrarProductosFiltrados = (nombre) => {
             <p class="card-text">Breve descripcion del producto a comprar</p>
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             <h3> ${producto.precio} </h3>
-            <button id='boton${misProductos.id}' type="submit" class="btn btn-primary">Agregar al Carrito</button>
+            <button id='boton${producto.id}' type="submit" class="btn btn-primary">Agregar al Carrito</button>
           </div>
         </div>
       </div>
 
     `
     contenedorProductos.append(contenedorCard)
-    
-  }
-    //Asigno un evento a cada boton
-    misProductos.forEach((producto) => {
-      document.getElementById(`boton${misProductos.id}`).addEventListener('click', function ()  {
-        agregarCarrito(producto);
-      })
+
+    document.getElementById(`boton${producto.id}`).addEventListener('click', function () {
+      agregarCarrito(producto);
     })
-  
-  
-    function agregarCarrito (productoComprado) {
-    carrito.agregarAlCarrito (productoComprado)
-    
-    document.getElementById('tablaCarrito').innerHTML += `
-      <tr>
-        <th>${productoComprado.id}</th>
-        <th>${productoComprado.nombre}</th>
-        <th>${productoComprado.precio}</th>
-      </tr>
-    `
+
   }
+
+}
+  
+function agregarCarrito (productoComprado) {
+  // debugger
+  carrito.agregarAlCarrito(productoComprado)
+
+  document.getElementById('tablaCarrito').innerHTML += `
+    <tr>
+      <th>${productoComprado.id}</th>
+      <th>${productoComprado.nombre}</th>
+      <th>${productoComprado.precio}</th>
+    </tr>
+  `
+  sumaCarrito()
+  
+  //guardo las comprar del carrito en el localStorage
+  const productosEnCarritoLocal = localStorage.getItem('carritoDeCompras')
+  let productosEnCarritoLocalParseado = [];
+  if (productosEnCarritoLocal) {
+    productosEnCarritoLocalParseado = JSON.parse(productosEnCarritoLocal);
+  }
+  localStorage.setItem('carritoDeCompras', JSON.stringify(carrito))
 }
 cargarFiltros();
+
+
+
+//Sumar los precios dentro del carrito
+
+let sumaPrecioCarrito = document.getElementById ('totalCarrito')
+
+function sumaCarrito () {
+  let total = carrito.mostrarCarrito().reduce((acc,producto) => acc + producto.precio, 0)
+  sumaPrecioCarrito.innerHTML = `
+  <div id="totalCarrito" class="alert alert-primary" role="alert">
+      El total dentro del carrito es de : $${total}
+  </div>
+  `
+}
 
 
