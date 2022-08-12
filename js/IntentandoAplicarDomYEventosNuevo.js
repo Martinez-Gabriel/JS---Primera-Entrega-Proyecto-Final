@@ -248,7 +248,7 @@ function agregarCarrito (productoComprado) {
       <th>${productoComprado.precio}</th>
     </tr>
   `
-  sumaCarrito()
+  
 
   //debugger
   //guardo las comprar del carrito en el localStorage
@@ -258,6 +258,7 @@ function agregarCarrito (productoComprado) {
     productosEnCarritoLocalParseado = JSON.parse(productosEnCarritoLocal);
   }
   localStorage.setItem('carritoDeCompras', JSON.stringify(carrito))
+  sumaCarrito()
 }
 
 cargarFiltros();
@@ -267,8 +268,8 @@ cargarFiltros();
 let sumaPrecioCarrito = document.getElementById('totalCarrito')
 
 function sumaCarrito () {
-  carrito.agregarAlCarrito
-  let total = carrito.mostrarCarrito().reduce((acc, producto) => acc + producto.precio, 0)
+  carrito.agregarAlCarrito;
+  let total = carrito.mostrarCarrito().reduce((acc, producto) => acc + producto.precio , 0)
   sumaPrecioCarrito.innerHTML = `
   <div id="totalCarrito" class="alert alert-primary" role="alert">
       El total dentro del carrito es de : $${total}
@@ -280,6 +281,7 @@ function sumaCarrito () {
     totalCarritoParseado = JSON.parse(totalCarrito);
   }
   localStorage.setItem ('totalCarritoSumado', JSON.stringify(total))
+  
 }
 
 //Muestro la informacion del LocalStorage
@@ -299,15 +301,16 @@ const cargarProductosDelLocalStorage = () => {
   `;
     });
   }
-  const totalCarritoString = localStorage.getItem ('totalCarritoSumado');
+  
+}
+const totalCarritoString = localStorage.getItem ('totalCarritoSumado');
   if (totalCarritoString) {
     const totalCarritoParseado = JSON.parse(totalCarritoString);
     const alert = document.getElementById('totalCarrito');
-    alert.innerHTML += `
+      alert.innerHTML += `;
     <div id="totalCarrito" class="alert alert-primary" role="alert">
-      El total dentro del carrito es de : $${totalCarritoParseado}
-  </div>
+      El total dentro del carrito es de : $${totalCarritoParseado};
+    </div>
   `
-}
 }
 cargarProductosDelLocalStorage()
