@@ -306,13 +306,17 @@ const cargarProductosDelLocalStorage = () => {
 cargarProductosDelLocalStorage()
 
 
-const finalizarCompra = get.getElementById ('finCompra');
-if (carrito = '') {
-  alert ('nose')
-}else {
-  finalizarCompra.innerHTML += `
-  <div class="alert alert-secondary" role="alert">
-      ATENCION!!! Por favor seleccione un producto para poder Finalizar la Compra!
-  </div>
-  `;
-}
+// const finalizarCompra = document.getElementById(`finCompra`).addEventListener('click', function () {
+//   const inyectarhtml = document.getElementById(`preguntaCuotas`)
+//   inyectarhtml.innerHTML += `
+// <div id="preguntaCuotas" class="alert alert-primary" role="alert">
+// Para Finalizar la compra ingrese se edad
+// </div>
+// `;
+
+
+// })
+let edad = prompt ('ingrese edad');
+edad >= 18 ? alert ('Ustedes puede realizar la compra') : alert ('Ustedes NO puede realizar la compra');
+
+;
