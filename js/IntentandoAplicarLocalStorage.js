@@ -1,4 +1,30 @@
-//Mi array de productos
+
+
+
+
+
+// const finalizarCompra = document.getElementById(`finCompra`).addEventListener('click', function () {
+//   const inyectarhtml = document.getElementById(`preguntaCuotas`)
+//   inyectarhtml.innerHTML += `
+// <div id="preguntaCuotas" class="alert alert-primary" role="alert">
+// Para Finalizar la compra ingrese se edad
+// </div>
+// `;
+
+
+// })
+Swal.fire({
+  title: 'Usted es Mayor a 18 años?',
+  showDenyButton: true,
+  showCancelButton: true,
+  confirmButtonText: 'SI, soy mayor de edad!',
+  denyButtonText: `NO!, soy menor de edad!`,
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.isConfirmed) {
+    Swal.fire('Usted puede acceder al Sitio!', '', 'success')
+    
+    //Mi array de productos
 const misProductos = [
   {
     id: 1,
@@ -230,6 +256,12 @@ const mostrarProductosFiltrados = (nombre) => {
 
     document.getElementById(`boton${producto.id}`).addEventListener('click', function () {
       agregarCarrito(producto);
+      Swal.fire({
+        title: 'Felicitaciones!',
+        text: 'Se Agrego el producto al carrito correctamente',
+        confirmButtonText: 'Ok',
+        icon: 'success',
+      }); 
     })
 
   }
@@ -301,22 +333,18 @@ const cargarProductosDelLocalStorage = () => {
       `;
   }
 }
+  cargarProductosDelLocalStorage() 
 
-
-cargarProductosDelLocalStorage()
-
-
-// const finalizarCompra = document.getElementById(`finCompra`).addEventListener('click', function () {
-//   const inyectarhtml = document.getElementById(`preguntaCuotas`)
-//   inyectarhtml.innerHTML += `
-// <div id="preguntaCuotas" class="alert alert-primary" role="alert">
-// Para Finalizar la compra ingrese se edad
-// </div>
-// `;
-
-
-// })
-let edad = prompt ('ingrese edad');
-edad >= 18 ? alert ('Ustedes puede realizar la compra') : alert ('Ustedes NO puede realizar la compra');
-
-;
+  } else if (result.isDenied) {
+    Swal.fire('Usted es menor de Edad y no puede comprar en el Sitio!', '', 'error')
+    const sinAcceso = getElementById ('container')
+    sinAcceso.innerHTML `
+    <div id="container" class="container mb-3">
+      <h1>USTED NO PUEDE ACCEDER A LA LISTA DE PRODUCTOS</h1>
+      <h2>Seleccione el tipo de producto que desea comprar!</h2>
+      <div id="filtroProductos" class="row px-2 gap-3 pt-3"></div>
+      <div id="productosFiltrados" class="row px-2 gap-3 pt-3"></div>
+    </div>
+    `
+  }
+})
