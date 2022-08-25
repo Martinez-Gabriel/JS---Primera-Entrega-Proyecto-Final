@@ -14,33 +14,11 @@
     <title>Bienvenidos! a la Web de compras PROYECT-HARDWARE</title>
   </head>
   <body>
-
-    <div id="container" class="container mb-3">
-      <!-- TITULO DE LA PAGINA -->
-      <h1>Tienda! PROYECT-HARDWARE</h1>
-      <h2>Seleccione el tipo de producto que desea comprar!</h2>
-      <!-- 2 CONTENEDOR DE LAS CARD INYECTADAS EN JS -->
-      <div id="filtroProductos" class="row px-2 gap-3 pt-3"></div>
-      <div id="productosFiltrados" class="row px-2 gap-3 pt-3"></div>
-    </div>
+    <!-- CONTAINER PRINCIPAL -->
+    <div id="containerTitulo" class="container mb-3"></div>
     <!-- TABLA DE CARRITO -->
-    <div>
-      <h3>Su Carrito!!!</h3>
-      <table id="tablaCarrito" class="table">
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Precio</th>
-        </tr>
-      </table>
-    </div>
-    <!-- ALERTA DE TOTAL -->
-    <div id="totalCarrito" class="alert alert-primary" role="alert"></div>
-    <button id="finCompra" type="submit" class="btn btn-primary">Finalizar Compra</button>
-    <div id="preguntaCuotas" class="alert alert-primary" role="alert"></div>
-
-
-
+    <div id="containerCarrito"></div>
+    
     <!-- JS Boostrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"

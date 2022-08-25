@@ -1,130 +1,134 @@
+//PREGUNTO AL USUARIO SI ES MAYOR DE EDAD
 
-
-
-
-
-// const finalizarCompra = document.getElementById(`finCompra`).addEventListener('click', function () {
-//   const inyectarhtml = document.getElementById(`preguntaCuotas`)
-//   inyectarhtml.innerHTML += `
-// <div id="preguntaCuotas" class="alert alert-primary" role="alert">
-// Para Finalizar la compra ingrese se edad
-// </div>
-// `;
-
-
-// })
 Swal.fire({
   title: 'Usted es Mayor a 18 años?',
   showDenyButton: true,
   showCancelButton: true,
-  confirmButtonText: 'SI, soy mayor de edad!',
-  denyButtonText: `NO!, soy menor de edad!`,
+  confirmButtonText: 'SI!',
+  denyButtonText: `NO!`,
+  icon: 'question',
 }).then((result) => {
-  /* Read more about isConfirmed, isDenied below */
+
+// SI ES MAYOR DE EDAD EJECUTO ESTO:
+  
   if (result.isConfirmed) {
     Swal.fire('Usted puede acceder al Sitio!', '', 'success')
+    document.getElementById("containerTitulo").innerHTML += `
+    <div id="containerTitulo" class="container mb-3">
+      <h1 id="tituloPrincipal">Tienda! PROYECT-HARDWARE</h1>
+      <h2>Seleccione el tipo de producto que desea comprar!</h2>
+      <div id="filtroProductos" class="row px-2 gap-3 pt-3"></div>
+      <div id="productosFiltrados" class="row px-2 gap-3 pt-3"></div>
+    </div>
     
-    //Mi array de productos
-const misProductos = [
-  {
-    id: 1,
-    nombre: 'intel i5 9600k',
-    marca: 'intel',
-    tipo: 'procesador',
-    precio: 35000,
-    imagen: '../imagenesProcesadores/intel-core-i5-9600k.jpg'
-  },
-  {
-    id: 2,
-    nombre: 'AMD Ryzen 3600X',
-    marca: 'AMD',
-    tipo: 'procesador',
-    precio: 47000,
-    imagen: '../imagenesProcesadores/ryzen-3600x.jpg'
-  },
-  {
-    id: 3,
-    nombre: 'Aorus ultra gaming 2.0',
-    marca: 'Aorus',
-    tipo: 'motherboard',
-    precio: 42000,
-    imagen: '../imagenesProcesadores/aorus-ultra-gaming-2.0.png'
-  },
-  {
-    id: 4,
-    nombre: 'intel i7 9700k',
-    marca: 'intel',
-    tipo: 'procesador',
-    precio: 45000,
-    imagen: '../imagenesProcesadores/intel-core-i7-9700k.jpg'
-  },
-  {
-    id: 5,
-    nombre: 'intel i9 9900k',
-    marca: 'intel',
-    tipo: 'procesador',
-    precio: 55000,
-    imagen: '../imagenesProcesadores/intel-core-i9-9900k.jpg'
-  },
-  {
-    id: 6,
-    nombre: 'SSD Kingstone 250GB',
-    marca: 'Kingstone',
-    tipo: 'almacenamiento',
-    precio: 20000,
-    imagen: '../imagenesProcesadores/ssd-kingston.jpg'
-  },
-  {
-    id: 7,
-    nombre: 'HDD 1TB',
-    marca: 'Wester Digital',
-    tipo: 'almacenamiento',
-    precio: 10000,
-    imagen: '../imagenesProcesadores/wester-digital-1-tb.jpg'
-  },
-  {
-    id: 8,
-    nombre: 'HDD 2TB',
-    marca: 'Wester Digital',
-    tipo: 'almacenamiento',
-    precio: 17000,
-    imagen: '../imagenesProcesadores/wester-digital-2-tb.png'
-  },
-  {
-    id: 9,
-    nombre: 'aorus b450 pro wifi',
-    marca: 'Aorus',
-    tipo: 'motherboard',
-    precio: 55000,
-    imagen: '../imagenesProcesadores/b450-aorus-pro-wifi.jpg'
-  },
-  {
-    id: 10,
-    nombre: 'asus tuf gaming b450m plus 2',
-    marca: 'Asus',
-    tipo: 'motherboard',
-    precio: 65000,
-    imagen: '../imagenesProcesadores/asus-tuf-gaming-b450m-plus-ii.jpg'
-  }
-]
+    <div id = "containerCarrito">
+      <h3>Su Carrito!!!</h3>
+      <table id="tablaCarrito" class="table">
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+        </tr>
+      </table>
+    </div>
+    
+    <div id="totalCarrito" class="alert alert-primary" role="alert"></div>
+    <button id="finCompra" type="submit" class="btn btn-primary">Finalizar Compra</button>
+    `;
 
-const categorias = [
-  {
-    id: 1,
-    nombre: 'procesador',
-    imagen: '../imagenesProcesadores/ryzen-3600x.jpg'
-  },
-  {
-    id: 2,
-    nombre: 'motherboard',
-    imagen: '../imagenesProcesadores/asus-tuf-gaming-b450m-plus-ii.jpg'
-  },
-  {
-    id: 3,
-    nombre: 'almacenamiento',
-    imagen: '../imagenesProcesadores/wester-digital-1-tb.jpg'
-  }
-]
+//ARRAY DE PRODUCTOS
+
+// const getProductos = async () => {
+//   const response = await fetch ('./js/productos.json');
+//   const dataProductos = await response.json ();
+// }
+ 
+// getProductos ();
+
+// const misProductos = [
+//   {
+//     id: 1,
+//     nombre: 'intel i5 9600k',
+//     marca: 'intel',
+//     tipo: 'procesador',
+//     precio: 35000,
+//     imagen: '../imagenesProcesadores/intel-core-i5-9600k.jpg'
+//   },
+//   {
+//     id: 2,
+//     nombre: 'AMD Ryzen 3600X',
+//     marca: 'AMD',
+//     tipo: 'procesador',
+//     precio: 47000,
+//     imagen: '../imagenesProcesadores/ryzen-3600x.jpg'
+//   },
+//   {
+//     id: 3,
+//     nombre: 'Aorus ultra gaming 2.0',
+//     marca: 'Aorus',
+//     tipo: 'motherboard',
+//     precio: 42000,
+//     imagen: '../imagenesProcesadores/aorus-ultra-gaming-2.0.png'
+//   },
+//   {
+//     id: 4,
+//     nombre: 'intel i7 9700k',
+//     marca: 'intel',
+//     tipo: 'procesador',
+//     precio: 45000,
+//     imagen: '../imagenesProcesadores/intel-core-i7-9700k.jpg'
+//   },
+//   {
+//     id: 5,
+//     nombre: 'intel i9 9900k',
+//     marca: 'intel',
+//     tipo: 'procesador',
+//     precio: 55000,
+//     imagen: '../imagenesProcesadores/intel-core-i9-9900k.jpg'
+//   },
+//   {
+//     id: 6,
+//     nombre: 'SSD Kingstone 250GB',
+//     marca: 'Kingstone',
+//     tipo: 'almacenamiento',
+//     precio: 20000,
+//     imagen: '../imagenesProcesadores/ssd-kingston.jpg'
+//   },
+//   {
+//     id: 7,
+//     nombre: 'HDD 1TB',
+//     marca: 'Wester Digital',
+//     tipo: 'almacenamiento',
+//     precio: 10000,
+//     imagen: '../imagenesProcesadores/wester-digital-1-tb.jpg'
+//   },
+//   {
+//     id: 8,
+//     nombre: 'HDD 2TB',
+//     marca: 'Wester Digital',
+//     tipo: 'almacenamiento',
+//     precio: 17000,
+//     imagen: '../imagenesProcesadores/wester-digital-2-tb.png'
+//   },
+//   {
+//     id: 9,
+//     nombre: 'aorus b450 pro wifi',
+//     marca: 'Aorus',
+//     tipo: 'motherboard',
+//     precio: 55000,
+//     imagen: '../imagenesProcesadores/b450-aorus-pro-wifi.jpg'
+//   },
+//   {
+//     id: 10,
+//     nombre: 'asus tuf gaming b450m plus 2',
+//     marca: 'Asus',
+//     tipo: 'motherboard',
+//     precio: 65000,
+//     imagen: '../imagenesProcesadores/asus-tuf-gaming-b450m-plus-ii.jpg'
+//   }
+// ]
+
+//CLASE CARRITO
 
 class Carrito {
   constructor() {
@@ -143,6 +147,8 @@ class Carrito {
     return this.total
   }
 }
+
+//CLASE PRODUCTOS
 
 class Productos {
   constructor() {
@@ -173,7 +179,11 @@ const carrito = new Carrito()
 
 const productos = new Productos()
 
-misProductos.forEach((producto) => {
+//RECORRO MIS PRODUCTOS
+const getProductos = async () => {
+  const response = await fetch ('./js/productos.json');
+  const dataProductos = await response.json ();
+  dataProductos.forEach((producto) => {
   const nuevoProducto = new Producto(
     producto.id,
     producto.nombre,
@@ -185,12 +195,18 @@ misProductos.forEach((producto) => {
 
   productos.cargarProducto(nuevoProducto)
 })
+}
 
+getProductos()
+//CARGO LOS FILTROS Y CARGO LAS CARDS
 
 const cargarFiltros = () => {
   const contenedorFiltros = document.getElementById('filtroProductos')
 
-  categorias.forEach((categoria) => {
+  const getCategorias = async () => {
+  const response = await fetch ('./js/categorias.json');
+  const dataCategorias = await response.json ();
+  dataCategorias.forEach((categoria) => {
     const filtro = document.createElement('div')
     filtro.classList.add('card')
     filtro.classList.add('col')
@@ -214,18 +230,22 @@ const cargarFiltros = () => {
     agregarEventoABoton.addEventListener('click', () => {
       mostrarProductosFiltrados(categoria.nombre)
     })
-  })
+  }) 
+}
+getCategorias ();
+
 }
 
 //VALIDO QUE LA SELECCION DE PRODUCTO NO SE REPITA
+
 const mostrarProductosFiltrados = (nombre) => {
-  // limpiar el contenedor de productos filtrados...
   if (document.getElementById('productosFiltrados').firstChild) {
     const borrarDiv = document.getElementById('productosFiltrados')
     borrarDiv.innerHTML = ``
   }
-  //FIN DE LA VALIDACION
-  //FILTRO LOS PRODUCTOS
+
+//FILTRO LOS PRODUCTOS
+
   const filtrarProductos = misProductos.filter((producto) => producto.tipo === nombre)
   const contenedorProductos = document.getElementById('productosFiltrados')
 
@@ -254,6 +274,8 @@ const mostrarProductosFiltrados = (nombre) => {
     `
     contenedorProductos.append(contenedorCard)
 
+//AGREGAR PRODUCTOS AL CARRITO + SWEET ALERT
+
     document.getElementById(`boton${producto.id}`).addEventListener('click', function () {
       agregarCarrito(producto);
       Swal.fire({
@@ -263,9 +285,7 @@ const mostrarProductosFiltrados = (nombre) => {
         icon: 'success',
       }); 
     })
-
   }
-
 }
 
 function agregarCarrito (productoComprado) {
@@ -280,7 +300,8 @@ function agregarCarrito (productoComprado) {
   `
   sumaCarrito()
 
-  //guardo las comprar del carrito en el localStorage
+  //GUARDO LAS COMPRAR EN EL LOCAL STORAGE
+
   const productosEnCarritoLocal = localStorage.getItem('carritoDeCompras')
   let productosEnCarritoLocalParseado = [];
   if (productosEnCarritoLocal) {
@@ -291,10 +312,9 @@ function agregarCarrito (productoComprado) {
 
 cargarFiltros();
 
-//Sumar los precios dentro del carrito
+//SUMO LOS PRECIOS DENTRO DEL CARRITO
 
 let sumaPrecioCarrito = document.getElementById('totalCarrito')
-
 
 function sumaCarrito () {
   let total = carrito.mostrarCarrito().reduce((acc, producto) => acc + producto.precio, 0)
@@ -305,7 +325,7 @@ function sumaCarrito () {
   `
 }
 
-//Muestro la informacion del LocalStorage
+//MUESTRO LA INFORMACION DEL LOCAL STORAGE
 
 const cargarProductosDelLocalStorage = () => {
   const carritoString = localStorage.getItem('carritoDeCompras');
@@ -335,16 +355,41 @@ const cargarProductosDelLocalStorage = () => {
 }
   cargarProductosDelLocalStorage() 
 
+  const finalizarCompra = document.getElementById(`finCompra`).addEventListener('click', function () {
+  finalizarCompra.innerHTML += `
+  <div>
+    <h4>Como desea abonar?</h4>
+    <button id="compraEfectivo" type="submit" class="btn btn-primary">Efectivo</button>
+    <button id="compraCredito" type="submit" class="btn btn-primary">Credito</button>
+  </div>
+
+`
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//SI ES MENOR DE EDAD, EJECUTO ESTO:
   } else if (result.isDenied) {
-    Swal.fire('Usted es menor de Edad y no puede comprar en el Sitio!', '', 'error')
-    const sinAcceso = getElementById ('container')
-    sinAcceso.innerHTML `
-    <div id="container" class="container mb-3">
-      <h1>USTED NO PUEDE ACCEDER A LA LISTA DE PRODUCTOS</h1>
-      <h2>Seleccione el tipo de producto que desea comprar!</h2>
+    Swal.fire('Usted es menor de Edad y no puede comprar en el Sitio!', '', 'warning')
+    document.getElementById('containerTitulo').innerHTML += `
+    <div id="containerTitulo" class="container mb-3">
+      <h1>USTED NO PUEDE ACCEDER AL CONTENIDO DEL SITIO</h1>
+      <h2>Es menor de edad!!!</h2>
       <div id="filtroProductos" class="row px-2 gap-3 pt-3"></div>
       <div id="productosFiltrados" class="row px-2 gap-3 pt-3"></div>
-    </div>
-    `
+    </div>`
   }
 })
